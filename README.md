@@ -11,7 +11,8 @@
 The functioning pipeline creates a fully managed build service that compiles your source code. It then produces code artifacts that can be used by CodeDeploy to deploy to your production environment automatically.
 
 
-![image](https://user-images.githubusercontent.com/48589838/89983289-e5fc2900-dc94-11ea-9258-685375cad1dd.png)
+![1](https://user-images.githubusercontent.com/107740323/236240814-1e393e23-69a0-4dc9-b67c-9f4f6bbb337c.jpg)
+
 
 
 
@@ -40,10 +41,9 @@ CodeBuild project—This is configured with the S3 bucket and S3 artifact.
 Auto Scaling group—Contains EC2 instances running Apache and the CodeDeploy agent fronted by an Elastic Load Balancer.
 Auto Scaling launch configurations—For use by the Auto Scaling group.
 Security groups—For the Jenkins server, the load balancer, and the CodeDeploy EC2 instance
+![3](https://user-images.githubusercontent.com/107740323/236240894-61a291b7-1c6f-425a-908b-0859f871073e.png)
+![2](https://user-images.githubusercontent.com/107740323/236240927-7792a67f-e629-4401-bef5-0b45fda15e73.png)
 
-![image](https://user-images.githubusercontent.com/48589838/89985330-87d14500-dc98-11ea-9964-c1211d0c8a03.png)
-
-![image](https://user-images.githubusercontent.com/48589838/89985319-83a52780-dc98-11ea-8442-3e8e7eb3e403.png)
 
 
 ### Access and unlock your Jenkins server
@@ -66,23 +66,14 @@ Use the root user to Cat the log file (/var/log/jenkins/jenkins.log) and copy th
 
 ### Create a project and configure the CodeDeploy Jenkins plugin
 
-![image](https://user-images.githubusercontent.com/48589838/89985612-fadabb80-dc98-11ea-84cf-c2add128ffc0.png)
-![image](https://user-images.githubusercontent.com/48589838/89985621-ff06d900-dc98-11ea-9fee-f80963c8291f.png)
-![image](https://user-images.githubusercontent.com/48589838/89985634-05955080-dc99-11ea-9187-db635bdeca9a.png)
-![image](https://user-images.githubusercontent.com/48589838/89985688-15149980-dc99-11ea-8810-8e7a43c1e4ff.png)
-![image](https://user-images.githubusercontent.com/48589838/89985702-1c3ba780-dc99-11ea-90c3-220b906d91a7.png)
-![image](https://user-images.githubusercontent.com/48589838/89985709-1fcf2e80-dc99-11ea-8caf-4962b2721915.png)
-![image](https://user-images.githubusercontent.com/48589838/89985726-25c50f80-dc99-11ea-9955-68b7897cb6db.png)
-![image](https://user-images.githubusercontent.com/48589838/89985715-22ca1f00-dc99-11ea-9fe5-4a1b0c79e65c.png)
-![image](https://user-images.githubusercontent.com/48589838/89985694-180f8a00-dc99-11ea-8a3c-fa211b9ea87e.png)
+![4](https://user-images.githubusercontent.com/107740323/236240991-0b3482b9-807b-44ef-beb9-20eb4faca7e4.jpg)
+![5](https://user-images.githubusercontent.com/107740323/236241116-a6a9a1fb-ea9f-48d0-be64-d1643abf9bb0.jpg)
+![6](https://user-images.githubusercontent.com/107740323/236241138-b198840b-4918-40c5-9ac0-65e6324ef53c.jpg)
+
 ![image](https://user-images.githubusercontent.com/48589838/89985744-28c00000-dc99-11ea-8e62-e3d18baa5152.png)
 ![image](https://user-images.githubusercontent.com/48589838/89985756-2c538700-dc99-11ea-9318-a0cb7a6aed0a.png)
-![image](https://user-images.githubusercontent.com/48589838/89985781-31b0d180-dc99-11ea-969e-407595b211ad.png)
-![image](https://user-images.githubusercontent.com/48589838/89985795-35dcef00-dc99-11ea-816f-2ce6a2bacece.png)
-![image](https://user-images.githubusercontent.com/48589838/89985806-38d7df80-dc99-11ea-8cd8-b003ccac1c45.png)
-![image](https://user-images.githubusercontent.com/48589838/89985848-45f4ce80-dc99-11ea-9a47-c8256c083864.png)
-![image](https://user-images.githubusercontent.com/48589838/89985864-4a20ec00-dc99-11ea-8dbf-fcecdedec7e6.png)
-![image](https://user-images.githubusercontent.com/48589838/89985875-4db47300-dc99-11ea-8288-fb7e30a5cb11.png)
+
+![17](https://user-images.githubusercontent.com/107740323/236241173-09aed6b4-411a-44f8-8073-5ab77205f73f.png)
 
 
 ### Testing the whole CI/CD pipeline
@@ -111,13 +102,16 @@ $ git commit -m 'Your first application'
 
 $ git push
 On the Jenkins server dashboard, wait for two minutes until the previously set project trigger starts working. After the trigger starts working, you should see a new build taking place.
+![6](https://user-images.githubusercontent.com/107740323/236241263-20b989f0-d404-4b3b-9d21-5f24989dd931.jpg)
 
-![image](https://user-images.githubusercontent.com/48589838/89986214-d92e0400-dc99-11ea-84cb-9ff3e830a1b8.png)
 
 In the Jenkins server Console Output page, check the build events and review the steps performed by each Jenkins plugin. You can also review the CodeDeploy deployment in detail, as shown in the following screenshot:
 
-![image](https://user-images.githubusercontent.com/48589838/89986227-dd5a2180-dc99-11ea-95a5-15938ac49df1.png)
+![10](https://user-images.githubusercontent.com/107740323/236241294-1a3b981d-ed73-48cc-8c59-7803e330ec48.jpg)
+![13](https://user-images.githubusercontent.com/107740323/236241308-42a29959-9493-4a2a-848c-cad204e86c3a.png)
+![14](https://user-images.githubusercontent.com/107740323/236241339-27103431-6b0f-425a-b4c2-5707c544994c.jpg)
 
 On completion, Jenkins should report that you have successfully deployed a web application. You can also use your ELBDNSName value to confirm that the deployed application is running successfully.
+![17](https://user-images.githubusercontent.com/107740323/236241423-fc20c6a2-19be-4ef1-8fc3-51233d4d4ee1.png)
 
-![image](https://user-images.githubusercontent.com/48589838/89986033-9409d200-dc99-11ea-883c-37f6a469e02c.png)
+
